@@ -1,12 +1,12 @@
 import { Request, Response } from 'express';
-import { db } from '../config/database.js';
+import { FavoriteModel } from '../models/Favorite.js';
+import { Types } from 'mongoose';
 
-export const getFavorites = (req: Request, res: Response) => {
+export const getFavorites = async (req: Request, res: Response) => {
   try {
     const userId = (req as any).userId;
     
-    const stmt = db.prepare('SELECT * FROM favorites WHERE user_id = ?');
-    const favorites = stmt.all(userId);
+    const favorites = await FavoriteModel.find({ userId }).sort({ createdAt: -1 });
 
     res.json(favorites);
   } catch (error) {
@@ -14,7 +14,7 @@ export const getFavorites = (req: Request, res: Response) => {
   }
 };
 
-export const addFavorite = (req: Request, res: Response) => {
+export const addFavorite = async (req: Request, res: Response) => {
   try {
     const userId = (req as any).userId;
     const { crypto_id } = req.body;
@@ -23,28 +23,35 @@ export const addFavorite = (req: Request, res: Response) => {
       return res.status(400).json({ error: 'Crypto ID is required' });
     }
 
-    const favoriteId = `fav_${Date.now()}`;
-    const stmt = db.prepare(
-      'INSERT INTO favorites (id, user_id, crypto_id) VALUES (?, ?, ?)'
-    );
-    stmt.run(favoriteId, userId, crypto_id);
+    const favorite = new FavoriteModel({
+      userId,
+      cryptoId: crypto_id
+    });
 
-    res.status(201).json({ message: 'Favorite added successfully', favoriteId });
+    await favorite.save();
+
+    res.status(201).json({ message: 'Favorite added successfully', id: favorite._id });
   } catch (error: any) {
-    if (error.message.includes('UNIQUE constraint failed')) {
+    if (error.code === 11000) {
       return res.status(400).json({ error: 'This crypto is already in your favorites' });
     }
     res.status(500).json({ error: 'Failed to add favorite' });
   }
 };
 
-export const deleteFavorite = (req: Request, res: Response) => {
+export const deleteFavorite = async (req: Request, res: Response) => {
   try {
     const userId = (req as any).userId;
     const { id } = req.params;
 
-    const stmt = db.prepare('DELETE FROM favorites WHERE id = ? AND user_id = ?');
-    stmt.run(id, userId);
+    const result = await FavoriteModel.findOneAndDelete({
+      _id: new Types.ObjectId(id),
+      userId
+    });
+
+    if (!result) {
+      return res.status(404).json({ error: 'Favorite not found' });
+    }
 
     res.json({ message: 'Favorite removed successfully' });
   } catch (error) {
@@ -52,13 +59,19 @@ export const deleteFavorite = (req: Request, res: Response) => {
   }
 };
 
-export const deleteFavoriteByCryptoId = (req: Request, res: Response) => {
+export const deleteFavoriteByCryptoId = async (req: Request, res: Response) => {
   try {
     const userId = (req as any).userId;
     const { cryptoId } = req.params;
 
-    const stmt = db.prepare('DELETE FROM favorites WHERE user_id = ? AND crypto_id = ?');
-    stmt.run(userId, cryptoId);
+    const result = await FavoriteModel.findOneAndDelete({
+      userId,
+      cryptoId
+    });
+
+    if (!result) {
+      return res.status(404).json({ error: 'Favorite not found' });
+    }
 
     res.json({ message: 'Favorite removed successfully' });
   } catch (error) {

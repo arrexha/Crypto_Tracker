@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import { initializeDatabase } from './config/database.js';
+import { connectDatabase } from './config/database.js';
 import authRoutes from './routes/auth.js';
 import favoritesRoutes from './routes/favorites.js';
 
@@ -14,24 +14,27 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
-// Initialize database
-initializeDatabase();
+// Connect to MongoDB
+connectDatabase().then(() => {
+  // Routes
+  app.use('/api/auth', authRoutes);
+  app.use('/api/favorites', favoritesRoutes);
 
-// Routes
-app.use('/api/auth', authRoutes);
-app.use('/api/favorites', favoritesRoutes);
+  // Health check
+  app.get('/health', (_req, res) => {
+    res.json({ status: 'ok', message: 'Server is running' });
+  });
 
-// Health check
-app.get('/health', (_req, res) => {
-  res.json({ status: 'ok', message: 'Server is running' });
-});
+  // Error handling middleware
+  app.use((err: Error, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
+    console.error('Error:', err);
+    res.status(500).json({ error: 'Internal server error' });
+  });
 
-// Error handling middleware
-app.use((err: Error, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
-  console.error('Error:', err);
-  res.status(500).json({ error: 'Internal server error' });
-});
-
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  });
+}).catch((error) => {
+  console.error('Failed to start server:', error);
+  process.exit(1);
 });
