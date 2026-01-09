@@ -1,6 +1,6 @@
 import { AuthResponse, LoginCredentials, RegisterCredentials, Favorite } from '../types';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000';
 
 export const authApi = {
   register: async (credentials: RegisterCredentials): Promise<AuthResponse> => {
