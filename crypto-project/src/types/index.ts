@@ -1,4 +1,3 @@
-// Cryptocurrency data types
 export interface CryptoData {
   id: string;
   symbol: string;

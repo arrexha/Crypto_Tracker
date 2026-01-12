@@ -107,7 +107,7 @@ export const CoinDetail = () => {
           <div className="mb-6">
             <h2 className="text-4xl font-bold text-gray-900 mb-3">{formatPrice(coin.market_data.current_price.usd)}</h2>
             <span className={`inline-block px-4 py-2 rounded-lg font-semibold ${isPositive ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
-              {isPositive ? '↑' : '↓'} {Math.abs(priceChange).toFixed(2)}%
+               {Math.abs(priceChange).toFixed(2)}%
             </span>
           </div>
 
@@ -143,25 +143,20 @@ export const CoinDetail = () => {
           </ResponsiveContainer>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="bg-gray-50 border border-gray-300 rounded-xl p-6">
-            <span className="text-gray-600 text-sm font-semibold uppercase">Market Cap</span>
-            <p className="text-lg text-gray-800 font-bold mt-2">${formatMarketCap(coin.market_data.market_cap.usd)}</p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="bg-gray-50 border border-gray-300 rounded-lg p-4">
+            <span className="text-gray-600 text-xs font-semibold uppercase">Market Cap</span>
+            <p className="text-sm text-gray-800 font-bold mt-1">${formatMarketCap(coin.market_data.market_cap.usd)}</p>
           </div>
 
-          <div className="bg-gray-50 border border-gray-300 rounded-xl p-6">
-            <span className="text-gray-600 text-sm font-semibold uppercase">Volume (24)</span>
-            <p className="text-lg text-gray-800 font-bold mt-2">${formatMarketCap(coin.market_data.total_volume.usd)}</p>
+          <div className="bg-gray-50 border border-gray-300 rounded-lg p-4">
+            <span className="text-gray-600 text-xs font-semibold uppercase">Circulating Supply</span>
+            <p className="text-sm text-gray-800 font-bold mt-1">{coin.market_data.circulating_supply?.toLocaleString() || "N/A"}</p>
           </div>
 
-          <div className="bg-gray-50 border border-gray-300 rounded-xl p-6">
-            <span className="text-gray-600 text-sm font-semibold uppercase">Circulating Supply</span>
-            <p className="text-lg text-gray-800 font-bold mt-2">{coin.market_data.circulating_supply?.toLocaleString() || "N/A"}</p>
-          </div>
-
-          <div className="bg-gray-50 border border-gray-300 rounded-xl p-6">
-            <span className="text-gray-600 text-sm font-semibold uppercase">Total Supply</span>
-            <p className="text-lg text-gray-800 font-bold mt-2">{coin.market_data.total_supply?.toLocaleString() || "N/A"}</p>
+          <div className="bg-gray-50 border border-gray-300 rounded-lg p-4">
+            <span className="text-gray-600 text-xs font-semibold uppercase">Total Supply</span>
+            <p className="text-sm text-gray-800 font-bold mt-1">{coin.market_data.total_supply?.toLocaleString() || "N/A"}</p>
           </div>
         </div>
       </div>

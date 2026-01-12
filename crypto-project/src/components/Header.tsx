@@ -24,11 +24,6 @@ export const Header = ({
         </div>
 
         <div className="header-actions">
-          {showBackButton && (
-            <button onClick={() => navigate("/")} className="back-button">
-              ← Back to List
-            </button>
-          )}
 
           {!isAuthenticated && (
             <div className="auth-links">

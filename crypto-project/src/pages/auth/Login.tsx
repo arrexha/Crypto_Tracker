@@ -27,10 +27,10 @@ export const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-dark flex items-center justify-center p-4">
-      <div className="bg-gray-900 rounded-xl shadow-2xl p-8 w-full max-w-md border border-gray-800">
-        <h1 className="text-3xl font-bold text-white text-center mb-2">Welcome Back</h1>
-        <p className="text-center text-gray-400 text-sm mb-6">Sign in to your account</p>
+    <div  className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
+
+    <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-md border border-gray-200">
+        <h1 className="text-3xl font-bold text-gray-900 text-center mb-2">Welcome Back</h1>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           {error && <div className="bg-red-900 border border-red-700 text-red-200 px-4 py-3 rounded-lg text-sm">{error}</div>}
@@ -45,7 +45,7 @@ export const Login = () => {
               required
               placeholder="you@example.com"
               disabled={isLoading}
-              className="w-full px-4 py-2 border border-gray-700 bg-gray-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-500 disabled:opacity-60 disabled:cursor-not-allowed"
+              className="w-full px-4 py-2 border border-gray-300 bg-white text-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-500 disabled:opacity-60 disabled:cursor-not-allowed"
             />
           </div>
 
@@ -60,7 +60,7 @@ export const Login = () => {
               placeholder="Enter your password"
               minLength={6}
               disabled={isLoading}
-              className="w-full px-4 py-2 border border-gray-700 bg-gray-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-500 disabled:opacity-60 disabled:cursor-not-allowed"
+               className="w-full px-4 py-2 border border-gray-300 bg-white text-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-500 disabled:opacity-60 disabled:cursor-not-allowed"
             />
           </div>
 

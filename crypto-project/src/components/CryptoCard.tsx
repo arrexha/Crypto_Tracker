@@ -29,7 +29,7 @@ export const CryptoCard = ({ crypto }: CryptoCardProps) => {
               crypto.price_change_percentage_24h >= 0 ? "positive" : "negative"
             }`}
           >
-            {crypto.price_change_percentage_24h >= 0 ? '↑' : '↓'} {Math.abs(crypto.price_change_percentage_24h).toFixed(2)}%
+            \{Math.abs(crypto.price_change_percentage_24h).toFixed(2)}%
           </p>
         </div>
 

@@ -20,7 +20,7 @@ const LoadingFallback = () => (
 
 function App() {
   return (
-    <ErrorBoundary>
+
       <AuthProvider>
         <BrowserRouter>
           <Suspense fallback={<LoadingFallback />}>
@@ -34,7 +34,6 @@ function App() {
           </Suspense>
         </BrowserRouter>
       </AuthProvider>
-    </ErrorBoundary>
   );
 }
 

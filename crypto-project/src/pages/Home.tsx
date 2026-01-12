@@ -81,7 +81,7 @@ export const Home = () => {
           <p className="text-gray-700 text-lg">Loading...</p>
         </div>
       ) : (
-        <div className={`max-w-7xl mx-auto px-4 py-6 ${view === "grid" ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" : "space-y-4"}`}>
+        <div className={`max-w-7xl mx-auto px-4 py-6 ${view === "grid" ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6" : "space-y-4"}`}>
           {filteredCryptos.map(crypto => <CryptoCard crypto={crypto} key={crypto.id} />)}
         </div>
       )}
