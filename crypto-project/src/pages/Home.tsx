@@ -47,41 +47,41 @@ export const Home = () => {
     });
 
   return (
-    <div className="app">
+    <div className="min-h-screen bg-white">
       <Header />
-      <div className="search-section-wrapper">
-        <div className="search-section">
+      <div className="max-w-7xl mx-auto px-4 py-6">
+        <div className="flex justify-center mb-6">
           <input 
             type="text" 
             placeholder="Search cryptos..." 
-            className="search-input" 
+            className="w-full md:w-96 px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
       </div>
-      <div className="controls">
-        <div className="filter-group">
-          <label>Sort by:</label>
-          <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+      <div className="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center gap-4 border-b border-gray-200">
+        <div className="flex items-center gap-2">
+          <label className="text-gray-700 font-medium">Sort by:</label>
+          <select value={sortBy} onChange={(e) => setSortBy(e.target.value)} className="px-4 py-2 bg-white border border-gray-300 text-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
             <option value="rank">Rank</option>
             <option value="name">Name</option>
             <option value="price-low">Price Low</option>
             <option value="price-high">Price High</option>
           </select>
         </div>
-        <div className="view-toggle">
-          <button className={view === "grid" ? "active" : ""} onClick={() => setView("grid")}>Grid</button>
-          <button className={view === "list" ? "active" : ""} onClick={() => setView("list")}>List</button>
+        <div className="flex gap-2">
+          <button className={`px-4 py-2 rounded-lg font-medium transition ${view === "grid" ? "bg-blue-600 text-white" : "bg-gray-100 text-gray-700 border border-gray-300"}`} onClick={() => setView("grid")}>Grid</button>
+          <button className={`px-4 py-2 rounded-lg font-medium transition ${view === "list" ? "bg-blue-600 text-white" : "bg-gray-100 text-gray-700 border border-gray-300"}`} onClick={() => setView("list")}>List</button>
         </div>
       </div>
       {loading ? (
-        <div className="loading">
-          <div className="spinner" />
-          <p>Loading...</p>
+        <div className="min-h-96 flex flex-col items-center justify-center">
+          <div className="w-12 h-12 border-4 border-gray-300 border-t-blue-500 rounded-full animate-spin mb-4" />
+          <p className="text-gray-700 text-lg">Loading...</p>
         </div>
       ) : (
-        <div className={`crypto-container ${view}`}>
+        <div className={`max-w-7xl mx-auto px-4 py-6 ${view === "grid" ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" : "space-y-4"}`}>
           {filteredCryptos.map(crypto => <CryptoCard crypto={crypto} key={crypto.id} />)}
         </div>
       )}
