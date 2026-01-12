@@ -75,12 +75,7 @@ export const Home = () => {
           <button className={`px-4 py-2 rounded-lg font-medium transition ${view === "list" ? "bg-blue-600 text-white" : "bg-gray-100 text-gray-700 border border-gray-300"}`} onClick={() => setView("list")}>List</button>
         </div>
       </div>
-      {loading ? (
-        <div className="min-h-96 flex flex-col items-center justify-center">
-          <div className="w-12 h-12 border-4 border-gray-300 border-t-blue-500 rounded-full animate-spin mb-4" />
-          <p className="text-gray-700 text-lg">Loading...</p>
-        </div>
-      ) : (
+      {loading ? null : (
         <div className={`max-w-7xl mx-auto px-4 py-6 ${view === "grid" ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6" : "space-y-4"}`}>
           {filteredCryptos.map(crypto => <CryptoCard crypto={crypto} key={crypto.id} />)}
         </div>

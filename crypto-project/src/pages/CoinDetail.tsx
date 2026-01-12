@@ -63,10 +63,6 @@ export const CoinDetail = () => {
     return (
       <div className="min-h-screen bg-white">
         <Header showBackButton={true} />
-        <div className="min-h-96 flex flex-col items-center justify-center">
-          <div className="w-12 h-12 border-4 border-gray-300 border-t-blue-500 rounded-full animate-spin mb-4" />
-          <p className="text-gray-700 text-lg">Loading coin data...</p>
-        </div>
       </div>
     );
   }
