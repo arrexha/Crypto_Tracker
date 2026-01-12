@@ -10,10 +10,10 @@ const Login = lazy(() => import("./pages/auth/Login").then(module => ({ default:
 const Register = lazy(() => import("./pages/auth/Register").then(module => ({ default: module.Register })));
 
 const LoadingFallback = () => (
-  <div className="app">
-    <div className="loading">
-      <div className="spinner" />
-      <p>Loading...</p>
+  <div className="min-h-screen bg-dark flex flex-col items-center justify-center">
+    <div className="text-center">
+      <div className="w-12 h-12 border-4 border-gray-700 border-t-blue-500 rounded-full animate-spin mx-auto mb-4" />
+      <p className="text-gray-300 text-lg">Loading...</p>
     </div>
   </div>
 );

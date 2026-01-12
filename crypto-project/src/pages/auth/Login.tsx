@@ -27,28 +27,30 @@ export const Login = () => {
   };
 
   return (
-    <div className="auth-container">
-      <div className="auth-card">
-        <h1>Welcome Back</h1>
+    <div className="min-h-screen bg-dark flex items-center justify-center p-4">
+      <div className="bg-gray-900 rounded-xl shadow-2xl p-8 w-full max-w-md border border-gray-800">
+        <h1 className="text-3xl font-bold text-white text-center mb-2">Welcome Back</h1>
+        <p className="text-center text-gray-400 text-sm mb-6">Sign in to your account</p>
 
-        <form onSubmit={handleSubmit} className="auth-form">
-          {error && <div className="error-popup">{error}</div>}
+        <form onSubmit={handleSubmit} className="space-y-4">
+          {error && <div className="bg-red-900 border border-red-700 text-red-200 px-4 py-3 rounded-lg text-sm">{error}</div>}
 
-          <div className="form-group">
-            <label htmlFor="email">Email</label>
+          <div className="space-y-2">
+            <label htmlFor="email" className="block text-gray-300 font-medium text-sm">Email</label>
             <input
               id="email"
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              placeholder="Enter your email"
+              placeholder="you@example.com"
               disabled={isLoading}
+              className="w-full px-4 py-2 border border-gray-700 bg-gray-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-500 disabled:opacity-60 disabled:cursor-not-allowed"
             />
           </div>
 
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
+          <div className="space-y-2">
+            <label htmlFor="password" className="block text-gray-300 font-medium text-sm">Password</label>
             <input
               id="password"
               type="password"
@@ -58,16 +60,17 @@ export const Login = () => {
               placeholder="Enter your password"
               minLength={6}
               disabled={isLoading}
+              className="w-full px-4 py-2 border border-gray-700 bg-gray-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-500 disabled:opacity-60 disabled:cursor-not-allowed"
             />
           </div>
 
-          <button type="submit" className="auth-button" disabled={isLoading}>
+          <button type="submit" disabled={isLoading} className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 disabled:opacity-60 disabled:cursor-not-allowed">
             {isLoading ? 'Signing in...' : 'Sign In'}
           </button>
         </form>
 
-        <p className="auth-footer">
-          Don't have an account? <Link to="/register">Sign up</Link>
+        <p className="text-center text-gray-400 text-sm mt-6">
+          Don't have an account? <Link to="/register" className="text-blue-400 hover:text-blue-300 font-semibold">Sign up</Link>
         </p>
       </div>
     </div>

@@ -76,11 +76,3 @@ export interface RegisterCredentials {
   email: string;
   password: string;
 }
-
-// Favorites types
-export interface Favorite {
-  id: string;
-  userId: string;
-  cryptoId: string;
-  createdAt: Date;
-}
