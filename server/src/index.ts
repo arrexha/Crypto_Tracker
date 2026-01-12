@@ -3,7 +3,6 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import { connectDatabase } from './config/database.js';
 import authRoutes from './routes/auth.js';
-import favoritesRoutes from './routes/favorites.js';
 
 dotenv.config();
 
@@ -18,7 +17,6 @@ app.use(express.json());
 connectDatabase().then(() => {
   // Routes
   app.use('/api/auth', authRoutes);
-  app.use('/api/favorites', favoritesRoutes);
 
   // Health check
   app.get('/health', (_req, res) => {
