@@ -1,6 +1,7 @@
 import { useState, FormEvent } from 'react';
 import { useNavigate, Link } from 'react-router';
 import { useAuth } from '../../context/AuthContext';
+import { ErrorModal } from '../../components/ErrorModal';
 
 export const Register = () => {
   const [email, setEmail] = useState('');
@@ -40,12 +41,12 @@ export const Register = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
+      <ErrorModal message={error} onClose={() => setError('')} />
       <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-md border border-gray-200">
         <h1 className="text-3xl font-bold text-gray-900 text-center mb-2">Create Account</h1>
   
  
         <form onSubmit={handleSubmit} className="space-y-4">
-          {error && <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg text-sm">{error}</div>}
 
           <div className="space-y-2">
             <label htmlFor="email" className="block text-gray-700 font-medium text-sm">Email</label>

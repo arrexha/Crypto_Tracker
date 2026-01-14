@@ -41,12 +41,6 @@ export const CryptoCard = ({ crypto }: CryptoCardProps) => {
             </span>
           </div>
 
-          <div className="stat">
-            <span className="stat-label">Volume</span>
-            <span className="stat-value">
-              ${formatMarketCap(crypto.total_volume)}
-            </span>
-          </div>
         </div>
       </div>
     </Link>
