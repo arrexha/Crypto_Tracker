@@ -1,8 +1,8 @@
 import { useNavigate, useParams } from "react-router";
-import { fetchChartData, fetchCoinData } from "../../api/coinGecko";
+import { fetchChartData, fetchCoinData } from "../api/coinGecko";
 import { useEffect, useState } from "react";
-import { formatMarketCap, formatPrice } from "../../utils/formatter";
-import { Header } from "../../components";
+import { formatMarketCap, formatPrice } from "../utils/formatter";
+import { Header } from "../components";
 import {
   CartesianGrid,
   LineChart,
@@ -12,7 +12,7 @@ import {
   Line,
   Tooltip,
 } from "recharts";
-import { CoinDetailData, ChartDataPoint } from "../../types";
+import { CoinDetailData, ChartDataPoint } from "../types";
 
 export const CoinDetail = () => {
   const { id } = useParams<{ id: string }>();
