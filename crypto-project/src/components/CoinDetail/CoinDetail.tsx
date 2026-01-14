@@ -1,8 +1,8 @@
 import { useNavigate, useParams } from "react-router";
-import { fetchChartData, fetchCoinData } from "../api/coinGecko";
+import { fetchChartData, fetchCoinData } from "../../api/coinGecko";
 import { useEffect, useState } from "react";
-import { formatMarketCap, formatPrice } from "../utils/formatter";
-import { Header } from "../components/Header";
+import { formatMarketCap, formatPrice } from "../../utils/formatter";
+import { Header } from "../index";
 import {
   CartesianGrid,
   LineChart,
@@ -12,7 +12,7 @@ import {
   Line,
   Tooltip,
 } from "recharts";
-import { CoinDetailData, ChartDataPoint } from "../types";
+import { CoinDetailData, ChartDataPoint } from "../../types";
 
 export const CoinDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -96,7 +96,7 @@ export const CoinDetail = () => {
               <p className="text-gray-600 font-semibold uppercase">{coin.symbol.toUpperCase()}</p>
             </div>
           </div>
-          <span className="px-4 py-2 bg-blue-600 text-white rounded-full font-bold text-lg">Rank #{coin.market_data.market_cap_rank}</span>
+  
         </div>
 
         <div className="bg-gray-50 border border-gray-300 rounded-xl p-6 mb-8">
@@ -111,10 +111,6 @@ export const CoinDetail = () => {
             <div>
               <span className="text-gray-600 text-sm font-semibold uppercase">24h High</span>
               <p className="text-xl text-gray-800 font-bold">{formatPrice(coin.market_data.high_24h.usd)}</p>
-            </div>
-            <div>
-              <span className="text-gray-600 text-sm font-semibold uppercase">24h Low</span>
-              <p className="text-xl text-gray-800 font-bold">{formatPrice(coin.market_data.low_24h.usd)}</p>
             </div>
           </div>
         </div>

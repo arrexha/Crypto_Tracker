@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router';
+import { useNavigate } from 'react-router';
 import { useAuth } from '../context/AuthContext';
 
 interface HeaderProps {
@@ -9,10 +9,9 @@ interface HeaderProps {
 
 export const Header = ({ 
   title = "Crypto Tracker", 
-  subtitle = "Real-time cryptocurrency prices and market data",
-  showBackButton = false 
+  subtitle = "Real-time cryptocurrency prices and market data"
 }: HeaderProps) => {
-  const { isAuthenticated, logout } = useAuth();
+  const { logout } = useAuth();
   const navigate = useNavigate();
 
   const handleLogout = () => {

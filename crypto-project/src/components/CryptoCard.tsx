@@ -17,7 +17,7 @@ export const CryptoCard = ({ crypto }: CryptoCardProps) => {
             <div>
               <h3>{crypto.name}</h3>
               <p className="symbol">{crypto.symbol.toUpperCase()}</p>
-              <span className="rank">#{crypto.market_cap_rank}</span>
+              
             </div>
           </div>
         </div>

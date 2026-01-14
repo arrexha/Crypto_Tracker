@@ -1,7 +1,7 @@
 import { useState, FormEvent } from 'react';
 import { useNavigate, Link } from 'react-router';
 import { useAuth } from '../../context/AuthContext';
-import { ErrorModal } from '../../components/ErrorModal';
+import { ErrorModal } from '../index';
 
 export const Login = () => {
   const [email, setEmail] = useState('');

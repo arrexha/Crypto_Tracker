@@ -1,13 +1,11 @@
 import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router";
 import { AuthProvider } from "./context/AuthContext";
-import { ErrorBoundary } from "./components/ErrorBoundary";
 
-// Lazy load pages
-const Home = lazy(() => import("./pages/Home").then(module => ({ default: module.Home })));
-const CoinDetail = lazy(() => import("./pages/CoinDetail").then(module => ({ default: module.CoinDetail })));
-const Login = lazy(() => import("./pages/auth/Login").then(module => ({ default: module.Login })));
-const Register = lazy(() => import("./pages/auth/Register").then(module => ({ default: module.Register })));
+const Home = lazy(() => import("./components/Home").then(module => ({ default: module.Home })));
+const CoinDetail = lazy(() => import("./components/CoinDetail").then(module => ({ default: module.CoinDetail })));
+const Login = lazy(() => import("./components/Auth").then(module => ({ default: module.Login })));
+const Register = lazy(() => import("./components/Auth").then(module => ({ default: module.Register })));
 
 const LoadingFallback = () => null;
 
