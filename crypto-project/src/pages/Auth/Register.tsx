@@ -1,7 +1,7 @@
 import { useState, FormEvent } from 'react';
 import { useNavigate, Link } from 'react-router';
 import { useAuth } from '../../context/AuthContext';
-import { ErrorModal } from '../index';
+import { ErrorModal } from '../../components';
 
 export const Register = () => {
   const [email, setEmail] = useState('');

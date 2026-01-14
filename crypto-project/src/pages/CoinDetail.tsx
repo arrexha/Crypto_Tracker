@@ -2,7 +2,7 @@ import { useNavigate, useParams } from "react-router";
 import { fetchChartData, fetchCoinData } from "../../api/coinGecko";
 import { useEffect, useState } from "react";
 import { formatMarketCap, formatPrice } from "../../utils/formatter";
-import { Header } from "../index";
+import { Header } from "../../components";
 import {
   CartesianGrid,
   LineChart,
@@ -96,7 +96,7 @@ export const CoinDetail = () => {
               <p className="text-gray-600 font-semibold uppercase">{coin.symbol.toUpperCase()}</p>
             </div>
           </div>
-  
+          <span className="px-4 py-2 bg-blue-600 text-white rounded-full font-bold text-lg">Rank #{coin.market_data.market_cap_rank}</span>
         </div>
 
         <div className="bg-gray-50 border border-gray-300 rounded-xl p-6 mb-8">

@@ -4,8 +4,8 @@ import { AuthProvider } from "./context/AuthContext";
 
 const Home = lazy(() => import("./components/Home").then(module => ({ default: module.Home })));
 const CoinDetail = lazy(() => import("./components/CoinDetail").then(module => ({ default: module.CoinDetail })));
-const Login = lazy(() => import("./components/Auth").then(module => ({ default: module.Login })));
-const Register = lazy(() => import("./components/Auth").then(module => ({ default: module.Register })));
+const Login = lazy(() => import("./pages/Auth").then(module => ({ default: module.Login })));
+const Register = lazy(() => import("./pages/Auth").then(module => ({ default: module.Register })));
 
 const LoadingFallback = () => null;
 
