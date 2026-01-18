@@ -1,8 +1,8 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import { connectDatabase } from './config/database.js';
-import authRoutes from './routes/auth.js';
+import { connectDatabase } from './config/database';
+import authRoutes from './routes/auth';
 
 dotenv.config();
 

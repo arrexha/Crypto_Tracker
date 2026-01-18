@@ -33,8 +33,6 @@ export const CoinDetail = () => {
       setCoin(data);
     } catch (err) {
       console.error("Error fetching crypto: ", err);
-    } finally {
-      setIsLoading(false);
     }
   };
 
@@ -96,7 +94,7 @@ export const CoinDetail = () => {
               <p className="text-gray-600 font-semibold uppercase">{coin.symbol.toUpperCase()}</p>
             </div>
           </div>
-          <span className="px-4 py-2 bg-blue-600 text-white rounded-full font-bold text-lg">Rank #{coin.market_data.market_cap_rank}</span>
+
         </div>
 
         <div className="bg-gray-50 border border-gray-300 rounded-xl p-6 mb-8">

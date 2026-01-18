@@ -35,10 +35,6 @@ export const Home = () => {
     };
   }, []);
 
-  const sortCryptos = (cryptos: CryptoData[]) => {
-    return cryptos;
-  };
-
   if (loading) {
     return (
       <div className="min-h-screen bg-white">
@@ -64,7 +60,7 @@ export const Home = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {sortCryptos(cryptos).map((crypto) => (
+          {cryptos.map((crypto) => (
             <CryptoCard key={crypto.id} crypto={crypto} />
           ))}
         </div>

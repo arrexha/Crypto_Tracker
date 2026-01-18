@@ -16,7 +16,7 @@ function App() {
         <BrowserRouter>
           <Suspense fallback={<LoadingFallback />}>
             <Routes>
-              <Route path="/" element={<Register />} />
+              <Route path="/" element={<Home />} />
               <Route path="/home" element={<Home />} />
               <Route path="/coin/:id" element={<CoinDetail />} />
               <Route path="/login" element={<Login />} />
