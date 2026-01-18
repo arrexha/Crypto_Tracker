@@ -23,7 +23,6 @@ const favoriteSchema = new Schema<IFavorite>(
   }
 );
 
-// Unique constraint on userId and cryptoId combination
 favoriteSchema.index({ userId: 1, cryptoId: 1 }, { unique: true });
 
 export const FavoriteModel = mongoose.model<IFavorite>('Favorite', favoriteSchema);

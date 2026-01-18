@@ -12,16 +12,13 @@ export const register = async (req: Request, res: Response) => {
       return res.status(400).json({ error: 'All fields are required' });
     }
 
-    // Check if user already exists
     const existingUser = await UserModel.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ error: 'Email already exists' });
     }
 
-    // Generate username from email
     const username = email.split('@')[0];
 
-    // Create new user
     const user = new UserModel({
       username,
       email,

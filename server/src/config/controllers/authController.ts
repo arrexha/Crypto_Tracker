@@ -6,7 +6,6 @@ export const register = (req: Request, res: Response): void => {
   try {
     const { username, email, password } = req.body;
 
-    // Validation
     if (!username || !email || !password) {
       res.status(400).json({ error: 'All fields are required' });
       return;
@@ -17,7 +16,6 @@ export const register = (req: Request, res: Response): void => {
       return;
     }
 
-    // Check if user already exists
     const existingUser = UserModel.findByEmail(email);
     if (existingUser) {
       res.status(400).json({ error: 'Email already registered' });
@@ -30,7 +28,6 @@ export const register = (req: Request, res: Response): void => {
       return;
     }
 
-    // Create user
     const user = UserModel.create({ username, email, password });
     const token = generateToken(user.id);
 
@@ -52,27 +49,23 @@ export const login = (req: Request, res: Response): void => {
   try {
     const { email, password } = req.body;
 
-    // Validation
     if (!email || !password) {
       res.status(400).json({ error: 'Email and password are required' });
       return;
     }
 
-    // Find user
     const user = UserModel.findByEmail(email);
     if (!user) {
       res.status(401).json({ error: 'Invalid email or password' });
       return;
     }
 
-    // Verify password
     const isValidPassword = UserModel.verifyPassword(password, user.password);
     if (!isValidPassword) {
       res.status(401).json({ error: 'Invalid email or password' });
       return;
     }
 
-    // Generate token
     const token = generateToken(user.id);
 
     res.json({
