@@ -11,11 +11,15 @@ export const Header = ({
   title = "Crypto Tracker", 
   subtitle = "Real-time cryptocurrency prices and market data"
 }: HeaderProps) => {
-  const { logout } = useAuth();
+  const { logout, isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
   const handleLogout = () => {
     logout();
+    navigate('/login');
+  };
+
+  const handleLogin = () => {
     navigate('/login');
   };
 
@@ -27,12 +31,21 @@ export const Header = ({
           <p className="text-gray-600 text-sm">{subtitle}</p>
         </div>
 
-        <button 
-          onClick={handleLogout}
-          className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg font-medium transition"
-        >
-          Logout
-        </button>
+        {isAuthenticated ? (
+          <button 
+            onClick={handleLogout}
+            className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg font-medium transition"
+          >
+            Logout
+          </button>
+        ) : (
+          <button 
+            onClick={handleLogin}
+            className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition"
+          >
+            Login
+          </button>
+        )}
       </div>
     </header>
   );
