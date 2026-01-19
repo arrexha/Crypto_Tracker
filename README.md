@@ -1,13 +1,5 @@
 # Crypto Tracker
 
-# React - Core library
-npm install react
-
-# React DOM - Rendering for web
-npm install react-dom
-
-# React Router - Navigation/routing
-npm install react-router
 
 # Recharts - Chart visualization
 npm install recharts
