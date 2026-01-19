@@ -140,11 +140,6 @@ export const CoinDetail = () => {
           </div>
 
           <div className="bg-gray-50 border border-gray-300 rounded-lg p-4">
-            <span className="text-gray-600 text-xs font-semibold uppercase">Circulating Supply</span>
-            <p className="text-sm text-gray-800 font-bold mt-1">{coin.market_data.circulating_supply?.toLocaleString() || "N/A"}</p>
-          </div>
-
-          <div className="bg-gray-50 border border-gray-300 rounded-lg p-4">
             <span className="text-gray-600 text-xs font-semibold uppercase">Total Supply</span>
             <p className="text-sm text-gray-800 font-bold mt-1">{coin.market_data.total_supply?.toLocaleString() || "N/A"}</p>
           </div>
