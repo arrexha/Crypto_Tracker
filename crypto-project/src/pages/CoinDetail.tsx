@@ -101,7 +101,8 @@ export const CoinDetail = () => {
           <div className="mb-6">
             <h2 className="text-4xl font-bold text-gray-900 mb-3">{formatPrice(coin.market_data.current_price.usd)}</h2>
             <span className={`inline-block px-4 py-2 rounded-lg font-semibold ${isPositive ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
-               {Math.abs(priceChange).toFixed(2)}%
+               {isPositive ? "↑" : "↓"} {Math.abs(priceChange).toFixed(2)}%
+               
             </span>
           </div>
 
