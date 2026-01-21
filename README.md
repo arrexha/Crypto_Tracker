@@ -1,5 +1,13 @@
 # Crypto Tracker
 
+## Technologies Used
+- **Frontend**: React, TypeScript, Vite
+- **Styling**: TailwindCSS
+- **Charts**:  Recharts
+- **Routing**:  React Router
+- **Backend**: Node.js, Express, TypeScript
+- **Database**: MongoDB (Mongoose)
+
 # Clone the Project
 ```bash
 git clone https://github.com/arrexha/Crypto_Tracker.git
