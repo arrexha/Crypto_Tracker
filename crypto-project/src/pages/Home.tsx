@@ -7,6 +7,7 @@ export const Home = () => {
   const [cryptos, setCryptos] = useState<CryptoData[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     let isMounted = true;
@@ -35,6 +36,15 @@ export const Home = () => {
     };
   }, []);
 
+  const handleSearch = (query: string) => {
+    setSearchQuery(query.toLowerCase());
+  };
+
+  const filteredCryptos = cryptos.filter((crypto) =>
+    crypto.name.toLowerCase().includes(searchQuery) ||
+    crypto.symbol.toLowerCase().includes(searchQuery)
+  );
+
   if (loading) {
     return (
       <div className="min-h-screen bg-white">
@@ -51,7 +61,7 @@ export const Home = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      <Header showBackButton={false} />
+      <Header showBackButton={false} onSearch={handleSearch} />
       <ErrorModal message={error} onClose={() => setError("")} />
 
       <div className="max-w-6xl mx-auto px-4 py-8">
@@ -59,11 +69,19 @@ export const Home = () => {
           <h1 className="text-4xl font-bold text-gray-900">Cryptocurrencies</h1>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {cryptos.map((crypto) => (
-            <CryptoCard key={crypto.id} crypto={crypto} />
-          ))}
-        </div>
+        {filteredCryptos.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredCryptos.map((crypto) => (
+              <CryptoCard key={crypto.id} crypto={crypto} />
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-12">
+            <p className="text-gray-600 text-lg">
+              {searchQuery ? `No cryptocurrencies found matching "${searchQuery}"` : 'Loading...'}
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );
