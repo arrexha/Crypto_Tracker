@@ -1,5 +1,9 @@
 # Crypto Tracker
 
+# Clone the Project
+```bash
+git clone https://github.com/arrexha/Crypto_Tracker.git
+```
 
 # Recharts - Chart visualization
 npm install recharts
